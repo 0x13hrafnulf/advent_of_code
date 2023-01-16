@@ -33,7 +33,7 @@ fn main() {
 
             let size = parsed_line[0].parse::<u32>().unwrap();
             let n = path.len();
-
+            
             for i in 0..n {
                 let cur_path = PathBuf::from_iter(&path[..=i]);
                 *paths.entry(cur_path).or_insert(0) += size;

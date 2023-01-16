@@ -6,12 +6,14 @@ import (
 	"strings"
 	"strconv"
 )
+
 func min(a, b uint32) uint32 {
 	if a < b {
 		return a
 	}
 	return b
 }
+
 func main() {
 
 	input, err := os.ReadFile("../7.txt")
@@ -38,14 +40,12 @@ func main() {
         } else if parsed_line[0] == "dir" {
             continue
         } else {
-			conv_size,_ := strconv.ParseUint(parsed_line[0], 10, 16)
+			conv_size,_ := strconv.ParseUint(parsed_line[0], 10, 32)
 			size := uint32(conv_size)
-
+			cur_path := ""
 			for j := 0; j < len(path); j++ {
-				cur_path := strings.Join(path[:j], "/")
-				cur_path = cur_path[1:]
-				paths[cur_path] += size
-
+				cur_path += path[j]
+				paths[cur_path] += size		
             }
         }     
 	}
